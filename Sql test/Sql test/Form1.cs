@@ -20,6 +20,10 @@ namespace Sql_test
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //when the form loads, it will automatically attempt to connect to the remote server.
+            //the label on the form will tell the user whether that connection has been accepted or denied.
+            //(for easy troubleshooting)
+
             string connectionString = null;
             SqlConnection cnn;
             connectionString = "Data Source=PL13\\MTCDB;Initial Catalog=Perez; User ID = sperez; Password = sperez18";
@@ -38,6 +42,8 @@ namespace Sql_test
 
         private void testQueryButton_Click(object sender, EventArgs e)
         {
+            //this bit uses the username and password to connect to the server.
+
             string connectionString = "Data Source=PL13\\MTCDB;Initial Catalog=Perez; User ID = sperez; Password = sperez18";
             SqlConnection cnn;
             cnn = new SqlConnection(connectionString);
@@ -47,6 +53,8 @@ namespace Sql_test
 
                 try
                 {
+
+                    //this parses the textbox and attempts to use it as a sql command.
 
                     DataTable dt = new DataTable();
                     SqlCommand cmd = new SqlCommand();
@@ -60,7 +68,7 @@ namespace Sql_test
 
                     dataGridView1.DataSource = dt;
 
-
+                    //error handling is always important!
                 }
                 catch (Exception ex)
                 {
